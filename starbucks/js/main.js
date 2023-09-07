@@ -16,6 +16,7 @@ console.log(introduction);
 
 //2. methods
 const menuBtn = document.getElementById("menuBtn");
+const closeBtn = document.getElementById("closeBtn");
 const overlay = document.getElementById("overlay");
 console.log(menuBtn);
 
@@ -24,3 +25,8 @@ menuBtn.addEventListener("click", function(){
     //console.log("menu button has been clicked");
     overlay.classList.add("active");
 }); //end of menu button click event
+
+closeBtn.addEventListener("click", function(){
+    //console.log("close button has been clicked");
+    overlay.classList.remove("active");
+}); //end of close button click event
