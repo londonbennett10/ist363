@@ -30,3 +30,29 @@ closeBtn.addEventListener("click", function(){
     //console.log("close button has been clicked");
     overlay.classList.remove("active");
 }); //end of close button click event
+
+//arrays and objects
+//basic variables
+const coffeeName = "Mocha";
+const coffeeHeadline = document.createElement("h2");
+coffeeHeadline.textContent = coffeeName;
+document.body.appendChild(coffeeHeadline);
+
+//objects
+const coffee={
+    name: "mocha",
+    price: 3.99,
+    description: "This is a delicous cup of coffee."
+};
+
+//console.log(coffee.name);
+const coffeeObjHeadline = document.createElement("h2");
+coffeeObjHeadline.textContent = coffee.name;
+document.body.appendChild(coffeeObjHeadline);
+
+const coffees=["Mocha","Latte","Espresso"];
+//console.log(coffees[0]);
+
+coffees.forEach(function(coffee) {
+    console.log(coffee);
+});

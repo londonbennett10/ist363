@@ -8,6 +8,10 @@ ul, li{
     list-style: none;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 :root{
     --starbucks-green: #006241;
     --medium-gray: rgba(0,0,0,.58);
@@ -28,6 +32,10 @@ body{
     z-index:1000;
     transition-property: all;
     transition-duration: .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
 }
 
 .overlay.active{
@@ -40,24 +48,61 @@ h1{
 }
 
 .logo{
-    width:100px;
-    height:100px;
+    width: 8rem;
+    height: 8rem;
+    margin-bottom: 2rem;
+    position: relative;
+    left: -1rem;
+    opacity: 0;
+    transition-property: all;
+    transition-delay: .25s;
+    transition-duration: .5s;
 }
 
 .mobile-nav{
     /*background-color: yellow;*/
-    padding: 1rem;
-
+  
 }
 
 .mobile-nav a{
     font-family: arial;
-    font-size: 1.1rem;
+    font-size: 2rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
     display: block;
-    padding: .5rem 1rem;
+    padding: 1rem 0;
+}
+
+.mobile-nav ul li{
+    position: relative;
+    left: -1rem;
+    opacity: 0;
+    transition-property: all;
+    transition-duration: .5s;
+}
+
+.overlay.active ul li{
+    opacity: 1;
+    left: 0;
+}
+
+.overlay.active ul li:nth-child(1){
+    transition-delay: .5s;
+}
+
+.overlay.active ul li:nth-child(2){
+    transition-delay: .6s;
+
+}
+
+.overlay.active ul li:nth-child(3){
+    transition-delay: .7s; 
+}
+
+.overlay.active .logo{
+    left: 0;
+    opacity: 1;
 }
 
 .btn-ui{
