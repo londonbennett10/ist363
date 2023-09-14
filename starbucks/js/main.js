@@ -33,10 +33,10 @@ closeBtn.addEventListener("click", function(){
 
 //arrays and objects
 //basic variables
-const coffeeName = "Mocha";
-const coffeeHeadline = document.createElement("h2");
-coffeeHeadline.textContent = coffeeName;
-document.body.appendChild(coffeeHeadline);
+//const coffeeName = "Mocha";
+//const coffeeHeadline = document.createElement("h2");
+//coffeeHeadline.textContent = coffeeName;
+//document.body.appendChild(coffeeHeadline);
 
 //objects
 const coffee={
@@ -46,13 +46,76 @@ const coffee={
 };
 
 //console.log(coffee.name);
-const coffeeObjHeadline = document.createElement("h2");
-coffeeObjHeadline.textContent = coffee.name;
-document.body.appendChild(coffeeObjHeadline);
+//const coffeeObjHeadline = document.createElement("h2");
+//coffeeObjHeadline.textContent = coffee.name;
+//document.body.appendChild(coffeeObjHeadline);
 
-const coffees=["Mocha","Latte","Espresso"];
-//console.log(coffees[0]);
+
+const coffees = [
+    {
+        name: 'mocha',
+        price: 3.99,
+        description: "this is a delicous cup of coffee",
+        image:{
+            fileName: "coffee.jpg",
+            width: 630,
+            height:630,
+            altText: "A cup of Coffee"
+        }
+    },
+
+    {
+        name: 'Latte',
+        price: 3.99,
+        description: "this is a delicous cup of coffee",
+        image:{
+            fileName: "coffee.jpg",
+            width: 630,
+            height:630,
+            altText: "A cup of Coffee"
+        }
+    },
+
+    {
+        name: 'Espresso',
+        price: 3.99,
+        description: "this is a delicous cup of coffee",
+        image:{
+            fileName: "coffee.jpg",
+            width: 630,
+            height:630,
+            altText: "A cup of Coffee"
+        }
+    }
+]
 
 coffees.forEach(function(coffee) {
-    console.log(coffee);
+    const {name, price,description,image} = coffee;
+    //const coffeeTitle = coffee;
+    const coffeeArticle = document.createElement('article');
+
+    const coffeeImage = document.createElement('img');
+    coffeeImage.src = `images/${image.fileName}`;
+    coffeeImage.width = image.width;
+    coffeeImage.height = image.height;
+    coffeeImage.alt = image.altText;
+
+    const coffeeName = document.createElement('h2');
+    coffeeName.textContent = name;
+
+    const coffeePrice = document.createElement('h3');
+    coffeePrice.textContent=price;
+
+    const coffeeDescription = document.createElement('p');
+    coffeeDescription.textContent= description;
+
+    coffeeArticle.appendChild(coffeeImage);
+    coffeeArticle.appendChild(coffeeName);
+    coffeeArticle.appendChild(coffeePrice);
+    coffeeArticle.appendChild(coffeeDescription);
+
+    //conffeeSecondaryHeadline.textContent = coffeeTitle;
+    //document.body.appendChild(conffeeSecondaryHeadline);
+
+    document.body.appendChild(coffeeArticle);
 });
