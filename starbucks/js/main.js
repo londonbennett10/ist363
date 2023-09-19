@@ -31,6 +31,15 @@ closeBtn.addEventListener("click", function(){
     overlay.classList.remove("active");
 }); //end of close button click event
 
+
+// const basicCoffees = ["mocha","latte","espresso"];
+// basicCoffees.forEach(function(basicCoffee) {
+//     console.log(basicCoffee);
+//}) end of basicCoffee foreach method
+
+
+
+
 //arrays and objects
 //basic variables
 //const coffeeName = "Mocha";
@@ -51,66 +60,84 @@ const coffee={
 //document.body.appendChild(coffeeObjHeadline);
 
 
-const coffees = [
-    {
-        name: 'mocha',
-        price: 3.99,
-        description: "this is a delicous cup of coffee",
-        image:{
-            fileName: "coffee.jpg",
-            width: 630,
-            height:630,
-            altText: "A cup of Coffee"
-        }
-    },
+// const coffees = [
+//     {
+//         name: 'mocha',
+//         price: 3.99,
+//         description: "this is a delicous cup of coffee",
+//         image:{
+//             fileName: "coffee.jpg",
+//             width: 630,
+//             height:630,
+//             altText: "A cup of Coffee"
+//         }
+//     },
 
-    {
-        name: 'Latte',
-        price: 3.99,
-        description: "this is a delicous cup of coffee",
-        image:{
-            fileName: "coffee.jpg",
-            width: 630,
-            height:630,
-            altText: "A cup of Coffee"
-        }
-    },
+//     {
+//         name: 'Latte',
+//         price: 3.99,
+//         description: "this is a delicous cup of coffee",
+//         image:{
+//             fileName: "coffee.jpg",
+//             width: 630,
+//             height:630,
+//             altText: "A cup of Coffee"
+//         }
+//     },
 
-    {
-        name: 'Espresso',
-        price: 3.99,
-        description: "this is a delicous cup of coffee",
-        image:{
-            fileName: "coffee.jpg",
-            width: 630,
-            height:630,
-            altText: "A cup of Coffee"
-        }
-    }
-]
+//     {
+//         name: 'Espresso',
+//         price: 3.99,
+//         description: "this is a delicous cup of coffee",
+//         image:{
+//             fileName: "coffee.jpg",
+//             width: 630,
+//             height:630,
+//             altText: "A cup of Coffee"
+//         }
+//     }
+// ]
+
+function buildTextElement(element, className, content) {
+    const newElement = document.createElement(element);
+    newElement.classList.add(className);
+    newElement.textContent = content;
+    return newElement;
+};
 
 coffees.forEach(function(coffee) {
-    const {name, price,description,image} = coffee;
+
+    const {title, price,description,image} = coffee;
+    
     //const coffeeTitle = coffee;
     const coffeeArticle = document.createElement('article');
+    coffeeArticle.classList.add("coffee-item");
 
     const coffeeImage = document.createElement('img');
-    coffeeImage.src = `images/${image.fileName}`;
+    //coffeeImage.src = `images/${image.fileName}`;
     coffeeImage.width = image.width;
     coffeeImage.height = image.height;
     coffeeImage.alt = image.altText;
 
-    const coffeeName = document.createElement('h2');
-    coffeeName.textContent = name;
+    // const coffeeTitle = document.createElement('h2');
+    // coffeeTitle.classList.add("coffee-title");
+    // coffeeTitle.textContent = title;
 
-    const coffeePrice = document.createElement('h3');
-    coffeePrice.textContent=price;
+    const coffeeTitle = buildTextElement("h2","coffee-title",title);
 
-    const coffeeDescription = document.createElement('p');
-    coffeeDescription.textContent= description;
+    const coffeePrice = buildTextElement("h3","coffee-price",price);
+    // const coffeePrice = document.createElement('h3');
+    // coffeePrice.classList.add("coffee-price");
+    // coffeePrice.textContent=price;
+    // coffeePrice.textContent=`$${price}`;
+    
+    const coffeeDescription = buildTextElement("P","coffee-description",description);
+    // const coffeeDescription = document.createElement('p');
+    // coffeeDescription.classList.add("coffee-description");
+    // coffeeDescription.textContent= description;
 
-    coffeeArticle.appendChild(coffeeImage);
-    coffeeArticle.appendChild(coffeeName);
+    //coffeeArticle.appendChild(coffeeImage);
+    coffeeArticle.appendChild(coffeeTitle);
     coffeeArticle.appendChild(coffeePrice);
     coffeeArticle.appendChild(coffeeDescription);
 
