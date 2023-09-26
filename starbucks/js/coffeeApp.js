@@ -2,6 +2,7 @@
 const ascendingBtn = document.getElementById("ascendingBtn");
 const descendingBtn = document.getElementById("descendingBtn");
 const coffeeList = document.getElementById("coffeeList");
+const priceRanges = document.getElementById("priceRanges");
  
 const purgeList = () => {
     coffeeList.innerHTML = "";
@@ -59,12 +60,27 @@ const displayList = (arr) => {
     
         // 4. append the article to the body
         coffeeList.appendChild(coffeeArticle);
+
+
     }); // end of coffees forEach method
 } // displayList function end
 
 
 
+
+
+
+
 //create event listeners
+menuBtn.addEventListener("click", function(){
+    //console.log("menu button has been clicked");
+    overlay.classList.add("active");
+}); //end of menu button click event
+
+closeBtn.addEventListener("click", function(){
+    //console.log("close button has been clicked");
+    overlay.classList.remove("active");
+}); //end of close button click event
 
 ascendingBtn.addEventListener("click", function() {
     //console.log("ascending button has been clicked");
@@ -84,6 +100,33 @@ descendingBtn.addEventListener("click", function() {
 
 displayList(coffees);
 
+
+priceRanges.addEventListener("change", () => {
+    console.log("price range changed");
+    console.log(event.target.value);
+    const selectedRange = event.target.value;
+    
+    if (selectedRange === "all"){
+        purgeList();
+        displayList(coffees);
+    } else{
+        // 2-3 becomes [2,3]
+        const [minValue,maxValue] = selectedRange.split("-");
+
+        const filteredCoffees = filterCoffees(minValue,maxValue);
+
+        purgeList();
+        displayList(filteredCoffees);
+    }// end of conditionl
+});//end of priceRanges
+
+const filterCoffees = (minValue,maxValue) => {
+    return coffees.filter((coffee) => {
+        const { price } =coffee;
+        return price >= minValue && price <= maxValue;
+    });
+
+};
 
 
 //purge coffee list
