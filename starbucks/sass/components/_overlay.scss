@@ -1,6 +1,7 @@
+@use '../abstracts/vars';
 
 .overlay{
-    background-color: var(--starbucks-green);
+    background-color: vars.$color_green;
     width: 100vw;
     height: 100vh;
     position:fixed;
@@ -13,61 +14,44 @@
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
+    .logo{
+        width: 8rem;
+        height: 8rem;
+        margin-bottom: 2rem;
+        position: relative;
+        left: -1rem;
+        opacity: 0;
+        transition-property: all;
+        transition-delay: .25s;
+        transition-duration: .5s;
+    }
 }
 
 .overlay.active{
     left:0;
 }
 
-.logo{
-    width: 8rem;
-    height: 8rem;
-    margin-bottom: 2rem;
-    position: relative;
-    left: -1rem;
-    opacity: 0;
-    transition-property: all;
-    transition-delay: .25s;
-    transition-duration: .5s;
-}
 
-.mobile-nav a{
-    font-family: arial;
-    font-size: 2rem;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 1rem 0;
-}
 
-.mobile-nav ul li{
-    position: relative;
-    left: -1rem;
-    opacity: 0;
-    transition-property: all;
-    transition-duration: .5s;
-}
-
-.overlay.active ul li{
+.overlay.active .nav__mobile ul li{
     opacity: 1;
     left: 0;
 }
 
-.overlay.active ul li:nth-child(1){
+.overlay.active .nav__mobile ul li:nth-child(1){
     transition-delay: .5s;
 }
 
-.overlay.active ul li:nth-child(2){
+.overlay.active .nav__mobile ul li:nth-child(2){
     transition-delay: .6s;
 
 }
 
-.overlay.active ul li:nth-child(3){
+.overlay.active .nav__mobile ul li:nth-child(3){
     transition-delay: .7s; 
 }
 
-.overlay.active .logo{
+.overlay.active .nav__mobile .logo{
     left: 0;
     opacity: 1;
 }

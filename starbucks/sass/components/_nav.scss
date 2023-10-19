@@ -1,7 +1,28 @@
 @use '../abstracts/mixins';
 
+
+
 .nav{
+
     background-color: pink;
+    &__list{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__link{
+        
+            font-family: arial;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+        
+    }
+
+    &__item{
+        
+    }
     &.nav--desktop{
         display: none;
         @include mixins.breakpoint(laptop){
@@ -9,18 +30,22 @@
         }
     }
 
-    &__list{
-        display: flex;
-        align-items: center;
-        gap: 1rem;
+    &.nav__mobile{
+        background-color: blue;
     }
 
-    &__item{
-        a{
-            font-family: arial;
-            font-weight: bold;
-            color: black;
-            text-decoration: none;
+    &.nav__social{
+        background-color: orange;
+    }
+
+    &.nav--footer{
+        background-color: red;
+        .nav__link{
+            color:white;
         }
     }
+
+
+
+   
 }
