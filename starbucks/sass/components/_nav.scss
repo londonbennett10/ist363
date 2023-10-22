@@ -1,51 +1,83 @@
 @use '../abstracts/mixins';
-
-
-
-.nav{
-
-    background-color: pink;
-    &__list{
+@use '../abstracts/vars';
+.nav {
+    &__list {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
-
-    &__link{
-        
-            font-family: arial;
-            font-weight: bold;
-            color: black;
-            text-decoration: none;
-        
+    &__item {
+       
     }
-
-    &__item{
-        
+    &__link {
+        font-family: Arial;
+        font-weight: bold;
+        text-decoration: none;
     }
-    &.nav--desktop{
+    &.nav--desktop {
         display: none;
-        @include mixins.breakpoint(laptop){
+        .nav__link {
+            color: black;
+            text-transform: uppercase;
+        }
+        @include mixins.breakpoint(laptop) {
+            display: block;
+        }
+    }
+    &.nav--utility{
+        display: none;
+        @include mixins.breakpoint(laptop) {
             display: block;
         }
     }
 
-    &.nav__mobile{
-        background-color: blue;
-    }
-
-    &.nav__social{
-        background-color: orange;
-    }
-
-    &.nav--footer{
-        background-color: red;
-        .nav__link{
-            color:white;
+    &.nav--mobile {
+        
+        .nav__list{
+            display: flex;
+            flex-direction: column;
+            .nav__link{
+                color: white;
+                font-size: 1.75rem;
+            }
         }
     }
 
 
+    &.nav--social {
+        .nav__list{
+            justify-content: center;
+            @include mixins.breakpoint(laptop){
+                justify-content: flex-start;
+            }
+        }
+        .nav__link {
+            background-color: white;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100px;
+            svg{
+                fill: vars.$color_green;
+                width: auto;
+                height: 1.5rem;
+            }
+        }
+    }
+    &.nav--footer {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        .nav__list{
+            flex-direction: column;
+            @include mixins.breakpoint(laptop){
+                flex-direction: row;
+            }
+        }
+        .nav__link {
+            color: white;
 
-   
+        }
+    }
 }
